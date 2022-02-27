@@ -1,0 +1,46 @@
+MongoDB Shell Commands:
+
+To show databases: show dbs
+To use existing or new db: use <dbname> -> use school-portal
+To show collections - show collections
+To show current db: db
+Create Collection:
+--------------------------
+db.createCollection("users")
+
+CRUD OPERATIONS:
+--------------------
+1 Create new document: 
+--------------------------- db.<collectionname>.insertOne({})
+db.users.insertOne({name: "vivek", location: 'delhi', country: 'india'})
+
+2 View all documents of collection 
+-------------------------------
+db.collection.find()
+db.collection.find().pretty()
+----------------------------
+Examples: db.users.find(), db.users.find().pretty()
+
+-------------------------------------------
+3 Update document in a collection:
+----------------------------------------
+db.collection.updateOne({condition}, {$set: {updatedData}})
+------------------------------------------------------
+Example: db.users.updateOne({name: 'vivek'}, {$set: {location: 'Hyd'}})
+-------------------------
+
+4. Delete document in a collection
+-------------------------------
+db.collection.deleteOne({condition})
+--------------------------------
+
+Example: db.users.deleteOne({name: 'vivek'})
+-------------------------------------------------------------
+
+
+
+
+
+
+
+
