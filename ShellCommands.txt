@@ -1,5 +1,9 @@
-MongoDB Shell Commands:
+MongoDB Terms:
+---------------------------
+Database - Collections - Documents - Fields
 
+MongoDB Shell Commands:
+------------------------------------------
 To show databases: show dbs
 To use existing or new db: use <dbname> -> use school-portal
 To show collections - show collections
