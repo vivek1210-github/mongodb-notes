@@ -1,0 +1,621 @@
+MongoDB is a javascript based
+Mozilla's Spider monkey js engine
+JSON and BSON are storage format in mongodb
+BSON - Binary json
+
+Humongous
+
+FOR desktop app, mobile apps, web apps
+
+for js based apps , technologies
+
+mean stack
+mern stack
+mongodb is a javascript based and internally used mozilla's spider monkey js engine
+
+extremely large
+
+the vendor: MongoDB
+
+1 Relational data/ sql database
+2 Document Type Database/NOSql Data base
+
+1 Relational data/ sql database
+--------------------------------
+tables - Fixed schema
+relationships
+join queries
+
+eg: Oracle, mysql etc
+
+2 Document Type Database/NOSql Data base
+---------------------------------
+Documents
+No-Schema
+Not required to have join queries - 
+performance is more
+
+eg: Mongodb, Amazon dynamo db, HBase,Cassandra
+
+
+Key characterstics of mongoDB Database:
+
+1 All information related to a document will be stored in a single place. To retrive data, it is not required to perform join operations and hence retrival is very fast.
+
+2 Document are independent of each other and no schema.
+Hence we can store data like videos, audio files etc
+
+3. We can perform operations like
+editing, deleting document and inserting new documents very easily.
+
+4 Retrieval data is in the form of json	 which can easily programming language without any convresion - interoperability
+
+5 We can store very huge amount of data and hence scaliblity is more
+
+
+Mongodb:
+
+Database - collections -documents -fields
+
+MongoDB Server
+MongoDB Shell/Client
+
+Once we installed MongoDB, we will get MongoDB Server and MongoDB Shell
+
+These are Javascript based applications
+
+MongoDB server is responsible to store data
+MongoDB Shell is responsible to manage server.
+by using this shell we can perform all required CRUD Operations
+
+MongoDB Atlas - Cloud based remote mongodb server
+
+to launch/start mongodb server - mongod command
+to launc/start mongodb shell - mongo command
+
+GUI Support is also there for MONGODB Shell
+-----------
+1 Compass
+2 Robo 3T
+
+
+check mongodb server version: db.version()
+
+db.help()
+
+
+MongoDB Drivers:
+--------------
+From Application(java, python, c#)
+if we want to communiate with database, some 
+special software must be required, which is nothing but driver software
+
+c:/data/db
+
+mongo --dbpath "C:\data\db"
+
+ mongodb --install - physical database
+ estoredb - logical database
+ 
+ collegedb ---> logical database
+ 
+ Data Formats in MongoDB:
+ --------------------------
+ 
+ json: {name: 'durga'} - BSON and that BSON will be stored
+ 
+BSON - Binary JSON
+
+1 In Javascript only 6 types are available:
+
+string,number, object, array, boolean, null
+
+But BSON provides some extra types also like
+32-BIT Integer - NumberInt
+ObjectId
+Date
+etc
+
+2
+BSON Format will required less memory
+ JSON - 1OKB
+BSON - 4 TO 5 KB
+
+Efficient storage and datatypes
+
+JSON - BSON - AT TIME OF SAVING
+
+EJSON - Extended JSON
+
+BSON - EJSON  - AT TIME OF RETRIVAL BSON DATA
+
+
+3 FORMATS IN MONGODB TO STORE /READ DATA
+-> JSON BSON EJSON
+
+
+cREATION OF DATABASE AND COLLECTION:
+-------------------------------------
+
+use durgadb
+ - will not create db , will only switch to durgadb
+
+when ever we are creating colleciton or inserting document then db will be created
+dynamically
+
+How to create collection:
+-------------------------
+Create collections in current db
+----------------------------------
+db.createCollection('employees')
+db.createCollection('students')
+
+db.getName() = get current db
+
+db.students.drop() = drop students collection
+
+cls - clear console
+
+\\Drop database
+db.dropDatabase() - current database will be deleted
+
+
+Basic CRUD Operations:
+------------------------------
+1 C- Create / Insert Document
+-------------------------------
+How to insert document into the collection:
+db.collection.insertOne()
+db.collection.insertMany()
+db.collection.insert()
+
+db.employees.insertOne({
+eno:100,
+ename: "Sunny",
+esal: 1000,
+eaddr: "Hyd"
+})
+
+
+db.employees.insertOne({
+eno:101,
+ename: "Bunny",
+esal: 2000,
+eaddr: "Mumbai"
+})
+
+db.employees.insertOne({
+eno:102,
+ename: "Chinny",
+esal: 3000,
+eaddr:"Chennai"
+})
+
+
+2 -- R-READ/RETRIVAL OPERATION:
+db.collection.find() - to get all documents present in the given collection
+db.collection.findOne() - to get one document
+
+eg: db.employees.find()
+db.employees.find().pretty()
+
+{
+        "_id" : ObjectId("621935041cd1b51306f80819"),
+        "eno" : 100,
+        "ename" : "Sunny",
+        "esal" : 1000,
+        "eaddr" : "Hyd"
+}
+{
+        "_id" : ObjectId("621935851cd1b51306f8081a"),
+        "eno" : 101,
+        "ename" : "Bunny",
+        "esal" : 2000,
+        "eaddr" : "Mumbai"
+}
+{
+        "_id" : ObjectId("621935c01cd1b51306f8081b"),
+        "eno" : 102,
+        "ename" : "Chinny",
+        "esal" : 3000,
+        "eaddr" : "Chennai"
+}
+
+
+3 --- U -update operations
+db.collection.updateOne()
+db.collection.updateMany()
+db.collection.replaceOne()
+
+uncaught exception: Error: the update operation document must contain atomic operators :
+DBCollection.prototype.updateOne@src/mongo/shell/crud_api.js:565:19
+@(shell):1:1
+
+
+update bunny salary as 10000
+db.employees.updateOne({_id:ObjectId("621935851cd1b51306f8081a")}, {$set: {esal : 10000}})
+
+Atomic operators: $set
+Note: if anything prefixed with $ symbol, then it is
+predefined word in MongoDB.
+
+4 D- Delete any record
+---------------------------
+db.collection.deleteOne()
+db.collection.deleteMany()
+
+db.employees.deleteOne({ename:"Bunny"})
+
+nOTE: Database and collection will be created dynamically when we try to insert record
+
+---------------------
+MongoDB
+Shell vs Server vs Driver
+Relational Databases vs Document Databases
+Creation of Database and collection
+Dropping of database and collection
+Basic CRUD Operations
+Data Formats in mongodb - JSON, BSON, EJSON
+
+db.createCollection('employees', {capped: true,
+size: 376578, max:1000})
+old document will be deleted automically - capped documents
+based on timestamp deletion.
+
+Types of Collections:
+----------------------
+Normal collection
+Capped Collection
+
+Q: What is capped collection?
+If size exceeds or maximum number of document reached, then oldest entry will be deleted automatically, such type of collections are called capped collections
+
+
+------------------------------
+insert documents in the collection 
+------------
+db.collection.insertOne()
+db.collection.insertMany()
+db.collection.insert()
+
+db.employees.insertOne({...})
+argument is only one javascript object
+
+db.collection.insertMany()
+db.employees.insertMany([
+ {
+   eno: 101, ename: "Sunil", esal: "2000"
+ },
+ {
+   eno: 102, ename: "John", esal: "5000"
+ }
+])
+
+
+db.collection.insert()
+-----------------------------
+To insert either a single document or multiple documents
+
+mongodb is a no-schema database;
+mongoimport - tool to import document from json file into MongoDB https://www.mongodb.com/try/download/database-tools
+
+copy mongoimport.exe to the MongoDB bin folder.
+C:\Program Files\MongoDB\Server\5.0\bin
+
+mongoimport command should be executed from cmd but not from the mongo shell
+
+mongoimport and mongod is a command line utility
+
+
+
+
+Run mongoImport cmd steps:
+--------------------------------
+from cmd go to location where json file exists
+---------
+mongoimport --db databasename --collection collectionName  --file filename --jsonArray
+
+mongoimport --db rahuldb --collection student9 --file students.json --jsonArray
+nOTES: --drop to drop earlier all documents
+All will be deleted and only new added in json file will be save in db.
+----------------
+mongoimport will create new db if not exists and also will create collection if not exists earlier
+
+------------------------------------
+if collection already available then the new document will be appended.
+----------------------------
+
+Note: we can use mongoimport to import excel and csv files.
+
+Nested Documents:
+--------------------------
+[
+	{
+		"title": "Devops in simple way",
+		"isbn": 1123444,
+		"downloadable": false,
+		"no_of_reviews": 10,
+		"tags": ["jenkins", "git", "CICD"],
+		"languages": ["english", "hindi", "telgu"],
+		"author": {
+					"name": 'Martin Kohenova',
+					"callname": "Mart",
+					"profile": {
+						"exp": 8,
+						"courses": 3,
+						"books": 2
+					}
+				  }
+	}
+]
+
+
+Note: 
+============
+inside nested document, we can take another document also.
+MongoDB supports upto 100 levels of nesting.
+
+Arrays in Documents:
+---------------------------
+
+any collection of items is called an array
+items can be string or numbers or array
+
+
+"_id" : ObjectId("621caf9fec2477392f382a1e
+
+ObjectId is not json type and it is of bson type
+It is something like primary key in relational database
+The Object will be assigned to _id field.
+
+ObjectId is of 12 bytes
+
+1. the first 4 bytes represent the timestamp when this document is created
+2 the next 3 bytes represent machine identifier 
+(hostname)
+3 the next 2 bytes represent process id
+4 the last 3 bytes represent  some random increment value.
+
+db.books.find()[0] -- list only first document index 0
+db.books.find()[0]._id
+db.books.find()[0]._id.getTimestamp()
+db.books.find()[0]._id.getTimestamp().toLocaleString()
+
+If we provide our own value, it may not provide timestamp, machine identifier, process id etc.
+Hence it is not recommended our own object id.
+
+Object are mutables.
+
+
+ObjectIds are Immutable, ie once we create/assigns ObjectId we cannot change its value.
+
+"Performing an update on the path '_id' would modify the immutable field '_id'"
+
+Default Behaviour of bulk inserts:
+--------------------------------------
+Ordered Insertion:
+-----------------------
+
+{ordered: false}
+
+while performing bulk insert operation, if any
+document insertion fails then the rest of the 
+documents won't be interested.
+the document which are already inserted, can't be rollback.
+
+Note: WE CAN customize this behaviour, we can customize in this way if one document insertion fails, still the remaining documents will be inserted.
+
+db.cars.insertMany([{},{},{}], {ordered: false})
+the default value for ordered is true.
+If order is false => still If one document insertion fails then rest of the documents will be inserted without any problem.
+----------------------------------------
+
+db.cars.insert([{_id:200, I: "Innova"},
+{_id: 200, R: "RITZ"}, {_id: 300, G: "GITZ"}], {ordered: false})
+
+------------------------------
+2 records will be inserted
+-----------------------
+
+WriteConcern Property:
+------------------------
+
+shell/client --------> server
+
+-----------------
+
+
+usecase-1:
+---------
+whenever we are performing insert operation,by default the shell/client will wait until getting acknowledgement. Server will provide acknowledgement after completing insert operation. This may reduce performance at client side.
+
+-- we can customize this with writeConcern, it will not wait for acknowledgement which will improve performance.{w:0}
+
+
+db.colleciton.insertOne({}, {writeConcern: {w:0}})
+w:1 ===> It is the default value and client will wait untill getting acknowledgement.
+w:0 => it means client won't wait for acknowledgement.
+
+
+db.cars.insert([{ I: "Innova"},
+{ R: "RITZ"}, { G: "GITZ"}], {
+writeConcern: {w: 0},
+ordered: false})
+
+If lakhs of recrods are required to insert, if one or two document insertion fails still no problem, but performance is important then writeConcern is the best choic.e
+
+
+
+{"author.callname": "Dan"}
+
+
+
+Querying Nested Documents:
+-------------------------------
+
+[
+	{
+		"title": "Devops in simple way",
+		"isbn": 1123444,
+		"downloadable": false,
+		"no_of_reviews": 10,
+		"tags": ["jenkins", "git", "CICD"],
+		"languages": ["english", "hindi", "telgu"],
+		"author": {
+					"name": 'Martin Kohenova',
+					"callname": "Mart",
+					"profile": {
+						"exp": 8,
+						"courses": 3,
+						"books": 2
+					}
+				  }
+	}
+]
+
+
+If the value of a field is again a document then that nested property value can be accessed by using dot operator. In this case, key must be enclosed within quotes.
+
+List out all documents where author's call name is kohli ?
+
+db.books.find({author.callname: "Dan"}) - Invalid
+> db.books.find({"author.callname": "Dan"})
+- Valid
+
+nested property must be inside double quotes:
+---------------------------------------------
+db.books.find({"author.profile.courses": 2})
+
+Query array elements:
+db.books.find({tags: "git"})
+db.books.find({tags: "git", tags: "aws"})
+
+---------------------------
+Q: List out all documents where 'tags' array contains 'programming' element?
+ 
+ Correct Way --------
+ > db.books.find({tags: "programming"}).pretty() ---- Query array elements
+ 
+ Wrong Way------
+ > db.books.find({tags: ["programming"]}).pretty() - Query array itself
+ 
+ 
+ --- List out all documents where tag array is 
+ ["langauge", "Freeware", "Programming"]
+ 
+ db.books.find({tags: ["jenkins", "git", "CICD"]}).pretty() - Query array itself
+ 
+ Order of array elements is important
+ case sentivite also exists for searching array values
+ 
+ -------------
+ 
+ Query Operators:
+ --------------------
+ $ - Every operator prefixed with $ symbol.
+ 
+by seeing $ symbol, mongo will see that as the operator.
+
+1 Comparisons Operators:
+-----------------------------
+$eq, $ne, $gt, $gte, $lt, $lte, $in, $nin
+
+$eq -> Equality:
+------------
+db.collection.find({ field: {$eq: value}})
+
+It is exactly same as 
+db.collection.find({field: value}) => it is a shortcut way
+
+Case-1: Equals to Specific Value:
+-----------------------------------
+Q1. Select all documents from books collections:
+-----------------------
+db.books.find({no_of_reviews: 10}).pretty()
+db.books.find({no_of_reviews: {$eq: 10}}).pretty()
+
+db.books.find({no_of_reviews: 10}).count()
+db.books.find({no_of_reviews: {$eq: 10}}).count()
+
+Case2: Field in nested document equals a value:
+Select all document from books collection where author profile contains 2 course
+
+-------------
+db.books.find({"author.profile.courses": 3})
+db.books.find({"author.profile.courses": {$eq: 3}})
+
+db.books.find({tags: {$eq: "git"}})
+
+Case: Equal array value directly:
+---------------------------
+db.books.find({tags: {$eq: [ "jenkins", "git", "CICD" ]}})
+
+$ne operator:
+-------------------
+
+ne -> means not equal
+
+we can use $ne opeator to select all documents
+where the value of the field is not equal to specified value.
+
+Syntax: db.collection.find({field: {$ne: value}});
+
+q: to select all documents from books collection where no_of_reviews is not equal to 3.
+--> db.books.find({no_of_reviews: {$neq: 3}})
+
+--
+$gt opeator:
+-------------
+$gt --- means greater than
+-----------
+We can use $gt operator to select all documents where the value of field is greater than specified value.
+
+Syntax: db.collection.find({field: {$gt: value}})
+
+db.books.find({no_of_reviews: {$gt : 3}})
+
+---
+$gte operator:
+-----
+$gte -> means greater than or equal to
+We can use $gte operator to select all documents where the value of field is greater than specified value.
+
+Syntax: db.collection.find({field: {$gte: value}})
+
+db.books.find({no_of_reviews: {$gte : 3}})
+
+$lt opeator:
+-------------
+$lt --- means less than
+-----------
+We can use $lt operator to select all documents where the value of field is greater than specified value.
+
+Syntax: db.collection.find({field: {$lt: value}})
+
+db.books.find({no_of_reviews: {$lt : 8}})
+
+---
+$lte operator:
+-----
+$lte -> means less than or equal to
+We can use $lte operator to select all documents where the value of field is greater than specified value.
+
+Syntax: db.collection.find({field: {$lte: value}})
+
+db.books.find({no_of_reviews: {$lte : 3}})
+
+$in operator: 
+--------------
+we can use $in operator to select all document , where the value of field equals in any value in the specified array.
+
+[1, 4, 5]
+
+db.collection.find({field: {$in: [value1, value2, value3]})
+
+Q: select all documents from the books collection where no of reviews is 1 or 4 or 5.
+
+db.books.find({no_of_reviews: {$in: [1,4 ,5]}}).pretty()
+
+Q2: Select all document from books collection where the tags array contains either git or php
+
+db.books.find({tags : {$in: ["php", "aws", "git"]}}).pretty()
